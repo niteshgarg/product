@@ -77,8 +77,5 @@ public class ProductImage implements Serializable {
 				+ product + ", imagePath=" + imagePath + "]";
 	}
 		
-	
-	
-	
 
 }

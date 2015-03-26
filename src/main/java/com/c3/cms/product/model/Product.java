@@ -1,14 +1,19 @@
 package com.c3.cms.product.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /*
@@ -44,13 +49,13 @@ public class Product implements Serializable {
 		this.productId = productId;
 	}
 
-	private Long productUuid;
+	private String productUuid = UUID.randomUUID().toString();
 
 	/**
 	 * @return the productUuid
 	 */
 	@Column(name = "PRODUCT_UUID", nullable = false, length = 500)
-	public Long getProductUuid() {
+	public String getProductUuid() {
 		return productUuid;
 	}
 
@@ -58,7 +63,7 @@ public class Product implements Serializable {
 	 * @param productUuid
 	 *            the productUuid to set
 	 */
-	public void setProductUuid(Long productUuid) {
+	public void setProductUuid(String productUuid) {
 		this.productUuid = productUuid;
 	}
 
@@ -208,6 +213,28 @@ public class Product implements Serializable {
 	public void setAccountId(Long accountId) {
 		this.accountId = accountId;
 	}
+	
+	
+	/**
+	 * Collection of the images linked with this product
+	 */
+	private Collection<ProductImage> associatedImages;
+	
+
+	/**
+	 * @return the associatedImages
+	 */
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="product")
+	public Collection<ProductImage> getAssociatedImages() {
+		return associatedImages;
+	}
+
+	/**
+	 * @param associatedImages the associatedImages to set
+	 */
+	public void setAssociatedImages(Collection<ProductImage> associatedImages) {
+		this.associatedImages = associatedImages;
+	}
 
 	@Override
 	public String toString() {
@@ -216,7 +243,10 @@ public class Product implements Serializable {
 				+ ", productDescription=" + productDescription
 				+ ", creationDate=" + creationDate + ", expiryDate="
 				+ expiryDate + ", status=" + status + ", isVisible="
-				+ isVisible + ", accountId=" + accountId + "]";
+				+ isVisible + ", accountId=" + accountId
+				+ ", associatedImages=" + associatedImages + "]";
 	}
+
+	
 
 }

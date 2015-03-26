@@ -1,6 +1,7 @@
 package com.c3.cms.business.model;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -38,12 +39,12 @@ public class Business {
 		this.businessId = businessId;
 	}
 
-	private String businessUuid;
+	private String businessUuid = UUID.randomUUID().toString();
 
 	/**
 	 * @return the businessUuid
 	 */
-	@Column(name = "BUSINESS_UUID", nullable = false)
+	@Column(name = "BUSINESS_UUID", nullable = false, length = 500)
 	public String getBusinessUuid() {
 		return businessUuid;
 	}
@@ -245,6 +246,47 @@ public class Business {
 		this.accountId = accountId;
 	}
 
+	/**
+	 * First line of the Business Address 
+	 */
+	private String addressLine1;
+	
+	/**
+	 * @return the addressLine1
+	 */
+	@Column(name="ADDRESS_LINE_1")
+	public String getAddressLine1() {
+		return addressLine1;
+	}
+
+	/**
+	 * @param addressLine1 the addressLine1 to set
+	 */
+	public void setAddressLine1(String addressLine1) {
+		this.addressLine1 = addressLine1;
+	}
+
+
+	/**
+	 * Second line of the Business Address 
+	 */
+	private String addressLine2;
+	
+	/**
+	 * @return the addressLine2
+	 */
+	@Column(name="ADDRESS_LINE_2")
+	public String getAddressLine2() {
+		return addressLine2;
+	}
+
+	/**
+	 * @param addressLine2 the addressLine2 to set
+	 */
+	public void setAddressLine2(String addressLine2) {
+		this.addressLine2 = addressLine2;
+	}
+	
 
 	@Override
 	public String toString() {
