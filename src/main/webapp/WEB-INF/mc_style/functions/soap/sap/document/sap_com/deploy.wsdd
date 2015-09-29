@@ -1,0 +1,42 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from Y_HS_TEST_104_255 WSDL service -->
+
+  <service name="Y_HS_TEST_104_255B" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="urn:sap-com:document:sap:soap:functions:mc-style"/>
+      <parameter name="wsdlServiceElement" value="Y_HS_TEST_104_255"/>
+      <parameter name="schemaUnqualified" value="urn:sap-com:document:sap:soap:functions:mc-style,urn:sap-com:document:sap:rfc:functions"/>
+      <parameter name="wsdlServicePort" value="Y_HS_TEST_104_255B"/>
+      <parameter name="className" value="mc_style.functions.soap.sap.document.sap_com.Y_HS_TEST_104_255BSkeleton"/>
+      <parameter name="wsdlPortType" value="Y_HS_TEST104_255"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <parameter name="allowedMethods" value="*"/>
+
+      <typeMapping
+        xmlns:ns="urn:sap-com:document:sap:rfc:functions"
+        qname="ns:char1"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:sap-com:document:sap:rfc:functions"
+        qname="ns:char255"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
