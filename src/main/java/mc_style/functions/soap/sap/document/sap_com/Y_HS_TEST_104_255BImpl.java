@@ -10,6 +10,7 @@ package mc_style.functions.soap.sap.document.sap_com;
 public class Y_HS_TEST_104_255BImpl implements mc_style.functions.soap.sap.document.sap_com.Y_HS_TEST104_255{
     public java.lang.String YWmTest102255(java.lang.String IEingabe) throws java.rmi.RemoteException {
     	String response = "ERROR";
+    	System.out.println("IEingabe="+IEingabe);
         if (IEingabe.equals("1")) {
         	response = "104;01-02-03;10894839;Leitschaufel Stufe 1;1";
         } else if (IEingabe.equals("2")) {
@@ -29,8 +30,10 @@ public class Y_HS_TEST_104_255BImpl implements mc_style.functions.soap.sap.docum
         }else if (IEingabe.equals("9")) {
         	response = "104;01-02-03;10894838;Druckbegrenzer;9";
         }else if (IEingabe.equals("B")) {
+        	System.out.println("Inside B");
         	response = "Nachster TA- Show next TO";
         }else if (IEingabe.equals("C")) {
+        	System.out.println("Inside C");
         	response = "TA_quittiert-TO Confirmed";
         }
         

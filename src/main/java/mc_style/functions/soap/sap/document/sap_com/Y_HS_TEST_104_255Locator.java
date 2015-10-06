@@ -22,7 +22,7 @@ public class Y_HS_TEST_104_255Locator extends org.apache.axis.client.Service imp
     }
 
     // Use to get a proxy class for Y_HS_TEST_104_255B
-    private java.lang.String Y_HS_TEST_104_255B_address = "http://localhost:8080/Product/services/Y_HS_TEST_104_255B";
+    private java.lang.String Y_HS_TEST_104_255B_address = "http://localhost:8081/Product/services/Y_HS_TEST_104_255B";
 
     public java.lang.String getY_HS_TEST_104_255BAddress() {
         return Y_HS_TEST_104_255B_address;
